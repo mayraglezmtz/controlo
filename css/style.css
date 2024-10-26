@@ -1,0 +1,288 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kumbh+Sans:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif; /* Cambiar a la fuente que prefieras */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)),
+    url('/images/bkgr.webp') no-repeat center center/cover;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto blur en la imagen de fondo */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px); /* Desenfoque */
+  z-index: -1; /* Detrás del contenido */
+}
+/* Contenedor del marco y chatbot juntos */
+.mobile-marco-div {
+  position: relative;
+    width: 375px;  /* Ancho fijo del celular */
+    height: 675px; /* Altura del celular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagen del marco del celular */
+.mobile-marco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;  /* Ocupa todo el contenedor */
+  height: 100%; /* Mantiene las proporciones del celular */
+  z-index: 1;   /* Debajo del chatbot */
+  filter: invert(100%);
+}
+
+/* Contenedor del chatbot */
+.chatbot {
+  position: absolute;
+  width: 85%;  /* Ajuste para que no ocupe todo el ancho del marco */
+  height: 90%; /* Margen interno del marco */
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 2;  /* Encima del marco */
+}
+
+/* Contenedor del chatbot */
+.chatbot-container {
+  width: 90%; /* Adaptamos al interior del marco del celular */
+  height: 85%;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chatbot {
+  width: 350px;
+  height: 550px; /* Altura fija para el chatbot */
+  border-radius: 10px;
+  border: 3px solid black;
+  background-color: #a5ddff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Para que el contenido se apile verticalmente */
+  justify-content: space-between; /* Asegura que el chat input esté en la parte inferior */
+  z-index: 2;
+  top: 68.5px;
+}
+
+header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img{
+  width: 50px;
+  display: none;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3{
+  font-size: 10px;
+}
+
+.close-btn {
+  cursor: pointer;
+}
+
+.chatbox {
+  /* Tus estilos existentes */
+  list-style: none;
+  max-height: calc(100%); /* Ajustar altura máxima para cabecera, área de entrada y la barra inferior */
+  overflow-y: auto; /* Agregar scroll si es necesario */
+  flex-grow: 1; /* Permite que el chatbox ocupe el espacio restante */
+  /* Ocultar scrollbar en IE, Edge y Firefox */
+  -ms-overflow-style: none;  /* IE y Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Ocultar scrollbar en Chrome, Safari y Opera */
+.chatbox::-webkit-scrollbar {
+  display: none;
+}
+
+.chat {
+  margin: 10px 0;
+}
+
+.incoming {
+  text-align: left;
+}
+
+.incoming img{
+  width: 200px;
+  border-radius: 20px;
+}
+
+.outgoing {
+  text-align: right;
+}
+
+.incoming p {
+  background-color: #ffffff;
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.outgoing p {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #000000; /* Línea superior para separar el input */
+}
+
+.chat-input textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  resize: none;
+  height: 40px; /* Altura inicial */
+}
+
+#send-btn {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 100%;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
+}
+
+.material-symbols-rounded {
+  background-color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.material-symbols-rounded img {
+  width: 20px;
+  filter: invert(100%);
+  padding: 3px 1px 3px 3px;
+}
+
+.div-teclado {
+  display: none;
+  width: 100%;
+}
+
+.div-teclado img {
+  width: 100%;
+}
+
+.bottom-bar {
+  width: 100%;
+  height: 60px;
+  background-color: #0088cc;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.icon {
+  color: #fff;
+  font-size: 20px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.mic-icon {
+  background-color: #000000;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+  top: -10px;
+}
+
+.mic-icon img,
+.icon {
+  filter: invert(100%);
+}
+
+/* Hover para los iconos de la barra inferior */
+.icon img:hover,
+.mic-icon img:hover {
+  cursor: pointer;
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+  transition: transform 0.2s ease; /* Efecto de transición suave */
+  opacity: 0.8; /* Reduce ligeramente la opacidad */
+}
+
+/* Micrófono activado */
+.mic-icon.active {
+  background-color: #ff0000; /* Cambiar el fondo a rojo */
+}
+
+.bottom-bar img {
+  max-width: 30px; /* Ajustar el tamaño de los iconos */
+  max-height: 30px; /* Ajustar la altura de los iconos */
+}
+
+.icon img {
+  height: auto; /* Mantener la proporción del tamaño de imagen */
+}
+
